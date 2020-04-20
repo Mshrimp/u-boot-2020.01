@@ -11,6 +11,25 @@
 #ifndef __VEXPRESS_COMMON_H
 #define __VEXPRESS_COMMON_H
 
+#if 0
+#define CONFIG_BOOTCOMMAND  \
+    "tftp 0x60003000 uImage; tftp 0x60500000 vexpress-v2p-ca9.dtb;  \
+    setenv bootargs 'root=/dev/nfs rw   \
+    nfsroot=192.168.1.104:/home/xiami/qemu/nfs_root init=/linuxrc   \
+    ip=192.168.1.110 console=ttyAMA0';  \
+    bootm 0x60003000 - 0x60500000;"
+#else
+#define CONFIG_BOOTCOMMAND  \
+    "tftp 0x60003000 uImage; tftp 0x60500000 vexpress-v2p-ca9.dtb;  \
+    setenv bootargs 'root=/dev/mmcblk0 rw   \
+    init=/linuxrc   \
+    ip=192.168.1.110 console=ttyAMA0';  \
+    bootm 0x60003000 - 0x60500000;"
+#endif
+#define CONFIG_IPADDR   192.168.1.110
+#define CONFIG_SERVERIP 192.168.1.104
+#define CONFIGN_NETMASK 255.255.255.0
+
 /*
  * Definitions copied from linux kernel:
  * arch/arm/mach-vexpress/include/mach/motherboard.h

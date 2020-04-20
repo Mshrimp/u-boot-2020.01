@@ -21,7 +21,8 @@ OBJCOPYFLAGS :=
 VENDOR :=
 #########################################################################
 
-ARCH := $(CONFIG_SYS_ARCH:"%"=%)
+#ARCH := $(CONFIG_SYS_ARCH:"%"=%)
+ARCH := arm
 CPU := $(CONFIG_SYS_CPU:"%"=%)
 ifdef CONFIG_SPL_BUILD
 ifdef CONFIG_TEGRA
